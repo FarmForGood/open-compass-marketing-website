@@ -4,9 +4,9 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const items = [
-  { label: t('audience.1.label'), href: '#agriculteurs', image: '/images/agri.png', imageClass: 'max-h-full' },
-  { label: t('audience.2.label'), href: '#cooperatives', image: '/images/agro.png', imageClass: 'max-h-full' },
-  { label: t('audience.3.label'), href: '#bureaux-etudes', image: '/images/consultant.png', imageClass: 'max-h-20' },
+  { label: t('audience.1.label'), href: '#agriculteurs', image: '/images/agri.webp', w: 147, h: 102, imageClass: 'max-h-full' },
+  { label: t('audience.2.label'), href: '#cooperatives', image: '/images/agro.webp', w: 236, h: 236, imageClass: 'max-h-full' },
+  { label: t('audience.3.label'), href: '#bureaux-etudes', image: '/images/consultant.webp', w: 200, h: 200, imageClass: 'max-h-20' },
 ];
 ---
 <section id="audience" class="scroll-mt-20 max-w-5xl mx-auto px-6 py-16 sm:py-20">
@@ -19,7 +19,7 @@ const items = [
       >
         {item.label}
         <div class="mt-4 h-28 flex items-center justify-center">
-          <img src={item.image} alt="" class:list={[item.imageClass, 'w-auto']} />
+          <img src={item.image} alt="" width={item.w} height={item.h} class:list={[item.imageClass, 'w-auto']} />
         </div>
       </a>
     ))}

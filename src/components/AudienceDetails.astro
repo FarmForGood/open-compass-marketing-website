@@ -9,14 +9,18 @@ const items = [
     title: t('audience.1.title'),
     ordered: true,
     points: [t('audience.1.point.1'), t('audience.1.point.2'), t('audience.1.point.3'), t('audience.1.point.4')],
-    image: '/images/report.png',
+    image: '/images/report.webp',
+    w: 601,
+    h: 831,
   },
   {
     id: 'cooperatives',
     title: t('audience.2.title'),
     ordered: true,
     points: [t('audience.2.point.1'), t('audience.2.point.2'), t('audience.2.point.3')],
-    image: '/images/product-card.png',
+    image: '/images/product-card.webp',
+    w: 687,
+    h: 504,
   },
   {
     id: 'bureaux-etudes',
@@ -24,6 +28,8 @@ const items = [
     ordered: true,
     points: [t('audience.3.point.1'), t('audience.3.point.2'), t('audience.3.point.3')],
     image: null,
+    w: 0,
+    h: 0,
   },
 ];
 ---
@@ -32,7 +38,7 @@ const items = [
     <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-12 items-center">
       <div class:list={[i % 2 === 1 && 'sm:order-last']}>
         {item.image ? (
-          <img src={item.image} alt="" class="w-full h-auto max-h-112 mx-auto object-contain" />
+          <img src={item.image} alt="" width={item.w} height={item.h} class="w-full h-auto max-h-112 mx-auto object-contain" />
         ) : (
           <div class="aspect-4/3 rounded-2xl bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center text-slate-400 text-sm">
             Image à venir

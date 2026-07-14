@@ -14,10 +14,12 @@ const t = useTranslations(lang);
 ---
 <Layout lang={lang} title={t('hero.title')} description={t('hero.subtitle')}>
   <Header lang={lang} />
-  <Hero lang={lang} />
-  <Stats lang={lang} />
-  <AudienceSelector lang={lang} />
-  <AudienceDetails lang={lang} />
-  <Contact lang={lang} />
+  <main>
+    <Hero lang={lang} />
+    <Stats lang={lang} />
+    <AudienceSelector lang={lang} />
+    <AudienceDetails lang={lang} />
+    <Contact lang={lang} />
+  </main>
   <Footer lang={lang} />
 </Layout>
