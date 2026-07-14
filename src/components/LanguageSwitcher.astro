@@ -1,0 +1,30 @@
+---
+import { languages, type Lang, getLocalizedPath } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+<div class="relative inline-block text-sm">
+  <select
+    id="lang-switcher"
+    class="appearance-none bg-transparent border border-slate-300 rounded-md px-3 py-1.5 pr-7 cursor-pointer hover:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400"
+    data-current={lang}
+  >
+    {Object.entries(languages).map(([code, label]) => (
+      <option value={getLocalizedPath(currentPath, code as Lang)} selected={code === lang}>
+        {label}
+      </option>
+    ))}
+  </select>
+</div>
+
+<script>
+  const select = document.getElementById('lang-switcher') as HTMLSelectElement | null;
+  select?.addEventListener('change', () => {
+    const target = select.value;
+    if (target) window.location.href = target;
+  });
+</script>

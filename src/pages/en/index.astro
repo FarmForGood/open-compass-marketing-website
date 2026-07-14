@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Features from '../../components/Features.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/ui';
+
+const lang = 'en' as const;
+const t = useTranslations(lang);
+---
+<Layout lang={lang} title={t('hero.title')} description={t('hero.subtitle')}>
+  <Header lang={lang} />
+  <Hero lang={lang} />
+  <About lang={lang} />
+  <Features lang={lang} />
+  <Contact lang={lang} />
+  <Footer lang={lang} />
+</Layout>

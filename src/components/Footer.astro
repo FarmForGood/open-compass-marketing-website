@@ -1,0 +1,12 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-slate-100 py-8">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-slate-500">
+    <span>&copy; {year} Open Compass. {t('footer.rights')}</span>
+  </div>
+</footer>

@@ -1,0 +1,24 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const items = [
+  { label: t('audience.1.label'), href: '#agriculteurs' },
+  { label: t('audience.2.label'), href: '#cooperatives' },
+  { label: t('audience.3.label'), href: '#bureaux-etudes' },
+];
+---
+<section id="audience" class="scroll-mt-20 max-w-5xl mx-auto px-6 py-16 sm:py-20">
+  <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-center text-primary-blue">{t('audience.title')}</h2>
+  <div class="mt-12 grid sm:grid-cols-3 gap-6">
+    {items.map((item) => (
+      <a
+        href={item.href}
+        class="block bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-primary-green hover:shadow-md transition-all text-center font-medium text-primary-blue"
+      >
+        {item.label}
+      </a>
+    ))}
+  </div>
+</section>

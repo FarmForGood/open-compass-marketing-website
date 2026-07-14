@@ -1,0 +1,21 @@
+{
+  "nav.about": "About",
+  "nav.features": "Features",
+  "nav.contact": "Contact",
+  "hero.title": "Grow your business with confidence",
+  "hero.subtitle": "We help small teams launch, market, and scale their products without the overhead of a big agency.",
+  "hero.cta": "Get in touch",
+  "about.title": "Who we are",
+  "about.body": "We're a small studio of designers and engineers who partner closely with founders. From a one-page pitch to a full brand relaunch, we keep things simple, fast, and honest.",
+  "features.title": "What we do",
+  "features.1.title": "Brand & Design",
+  "features.1.body": "Clean, modern visual identity that makes your product instantly recognizable.",
+  "features.2.title": "Web & Product",
+  "features.2.body": "Fast, accessible websites and product experiences built to convert.",
+  "features.3.title": "Growth & Marketing",
+  "features.3.body": "Data-informed campaigns that bring the right people to your door.",
+  "contact.title": "Let's talk",
+  "contact.body": "Tell us about your project and we'll get back to you within one business day.",
+  "contact.email.label": "Email us at",
+  "footer.rights": "All rights reserved."
+}

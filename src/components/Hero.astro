@@ -1,0 +1,25 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="bg-primary-bg">
+  <div class="max-w-3xl mx-auto px-6 pt-16 pb-20 sm:pt-24 sm:pb-28 flex flex-col items-center text-center">
+    <img
+      src="/images/logo.svg"
+      alt="Open Compass"
+      class="h-14 sm:h-16 w-auto mb-10"
+      width="595"
+      height="250"
+    />
+    <h1 class="text-3xl sm:text-5xl font-bold tracking-tight leading-tight text-primary-blue">{t('hero.title')}</h1>
+    <p class="mt-5 text-slate-600 text-base sm:text-lg max-w-xl">{t('hero.subtitle')}</p>
+    <a
+      href={`/${lang}#contact`}
+      class="inline-block mt-8 bg-primary-blue text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-primary-blue/90 transition-colors"
+    >
+      {t('hero.cta')}
+    </a>
+  </div>
+</section>

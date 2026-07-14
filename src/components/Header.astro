@@ -1,0 +1,63 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const base = `/${lang}`;
+const navItems =
+  lang === 'fr'
+    ? [{ href: '#audience', label: t('nav.audience') }]
+    : [
+        { href: '#about', label: t('nav.about') },
+        { href: '#features', label: t('nav.features') },
+      ];
+---
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-100">
+  <nav class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href={base} class="flex items-center gap-2 font-semibold text-lg tracking-tight text-primary-blue">
+      <img src="/images/logo-symbol.svg" alt="" class="h-8 w-8" width="32" height="32" />
+      Open&nbsp;Compass
+    </a>
+
+    <button
+      id="mobile-menu-btn"
+      class="sm:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 5h14v1.5H3V5zm0 4.25h14v1.5H3v-1.5zM3 13.5h14V15H3v-1.5z" clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    <div class="hidden sm:flex items-center gap-8">
+      {navItems.map((item) => (
+        <a href={`${base}${item.href}`} class="text-sm hover:text-slate-500">{item.label}</a>
+      ))}
+      <a href={`${base}#contact`} class="text-sm hover:text-slate-500">{t('nav.contact')}</a>
+      <LanguageSwitcher lang={lang} />
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden sm:hidden border-t border-slate-100 px-6 py-4 flex flex-col gap-4">
+    {navItems.map((item) => (
+      <a href={`${base}${item.href}`} class="text-sm">{item.label}</a>
+    ))}
+    <a href={`${base}#contact`} class="text-sm">{t('nav.contact')}</a>
+    <LanguageSwitcher lang={lang} />
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const isHidden = menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(isHidden));
+  });
+</script>
