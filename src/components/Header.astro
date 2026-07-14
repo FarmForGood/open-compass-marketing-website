@@ -8,13 +8,6 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const base = `/${lang}`;
-const navItems =
-  lang === 'fr'
-    ? []
-    : [
-        { href: '#about', label: t('nav.about') },
-        { href: '#features', label: t('nav.features') },
-      ];
 ---
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-100">
   <nav class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
@@ -35,18 +28,12 @@ const navItems =
     </button>
 
     <div class="hidden sm:flex items-center gap-8">
-      {navItems.map((item) => (
-        <a href={`${base}${item.href}`} class="text-sm hover:text-slate-500">{item.label}</a>
-      ))}
       <a href={`${base}#contact`} class="text-sm hover:text-slate-500">{t('nav.contact')}</a>
       <LanguageSwitcher lang={lang} />
     </div>
   </nav>
 
   <div id="mobile-menu" class="hidden sm:hidden border-t border-slate-100 px-6 py-4 flex flex-col gap-4">
-    {navItems.map((item) => (
-      <a href={`${base}${item.href}`} class="text-sm">{item.label}</a>
-    ))}
     <a href={`${base}#contact`} class="text-sm">{t('nav.contact')}</a>
     <LanguageSwitcher lang={lang} />
   </div>
