@@ -1,19 +1,52 @@
 ---
-import { useTranslations, type Lang } from '../i18n/ui';
+import { useTranslations, boldify, type Lang } from '../i18n/ui';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const items = [
-  { id: 'agriculteurs', title: t('audience.1.title'), body: t('audience.1.body') },
-  { id: 'cooperatives', title: t('audience.2.title'), body: t('audience.2.body') },
-  { id: 'bureaux-etudes', title: t('audience.3.title'), body: t('audience.3.body') },
+  {
+    id: 'agriculteurs',
+    title: t('audience.1.title'),
+    ordered: true,
+    points: [t('audience.1.point.1'), t('audience.1.point.2'), t('audience.1.point.3'), t('audience.1.point.4')],
+  },
+  {
+    id: 'cooperatives',
+    title: t('audience.2.title'),
+    ordered: true,
+    points: [t('audience.2.point.1'), t('audience.2.point.2'), t('audience.2.point.3')],
+  },
+  {
+    id: 'bureaux-etudes',
+    title: t('audience.3.title'),
+    ordered: false,
+    points: [t('audience.3.point.1'), t('audience.3.point.2'), t('audience.3.point.3')],
+  },
 ];
 ---
 {items.map((item, i) => (
   <section id={item.id} class:list={['scroll-mt-20 px-6 py-16 sm:py-20', i % 2 === 1 && 'bg-slate-50']}>
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-primary-blue">{item.title}</h2>
-      <p class="mt-4 text-slate-600 text-base sm:text-lg">{item.body}</p>
+    <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-12 items-center">
+      <div class:list={[i % 2 === 1 && 'sm:order-last']}>
+        <div class="aspect-4/3 rounded-2xl bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center text-slate-400 text-sm">
+          Image à venir
+        </div>
+      </div>
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-primary-blue">{item.title}</h2>
+        {item.ordered ? (
+          <ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 text-base sm:text-lg">
+            {item.points.map((point) => <li set:html={boldify(point)} />)}
+          </ol>
+        ) : (
+          <ul class="mt-6 space-y-3 list-disc list-inside text-slate-600 text-base sm:text-lg">
+            {item.points.map((point) => <li set:html={boldify(point)} />)}
+          </ul>
+        )}
+        <a href={`/${lang}#contact`} class="mt-6 inline-block text-sm font-medium text-primary-green hover:underline">
+          {t('audience.contact.cta')} →
+        </a>
+      </div>
     </div>
   </section>
 ))}

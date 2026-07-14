@@ -30,3 +30,8 @@ export function getLocalizedPath(path: string, lang: Lang): string {
   const cleanPath = path.replace(/^\/(en|fr|nl)/, '') || '/';
   return `/${lang}${cleanPath === '/' ? '' : cleanPath}`;
 }
+
+export function boldify(text: string): string {
+  const escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}

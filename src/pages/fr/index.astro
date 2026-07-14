@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Hero from '../../components/Hero.astro';
+import Stats from '../../components/Stats.astro';
 import AudienceSelector from '../../components/AudienceSelector.astro';
 import AudienceDetails from '../../components/AudienceDetails.astro';
 import Contact from '../../components/Contact.astro';
@@ -14,6 +15,7 @@ const t = useTranslations(lang);
 <Layout lang={lang} title={t('hero.title')} description={t('hero.subtitle')}>
   <Header lang={lang} />
   <Hero lang={lang} />
+  <Stats lang={lang} />
   <AudienceSelector lang={lang} />
   <AudienceDetails lang={lang} />
   <Contact lang={lang} />
