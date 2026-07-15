@@ -4,8 +4,8 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const items = [
-  { label: t('audience.1.label'), href: '#agriculteurs', image: '/images/agri.webp', w: 147, h: 102, imageClass: 'max-h-full' },
-  { label: t('audience.2.label'), href: '#cooperatives', image: '/images/agro.webp', w: 236, h: 236, imageClass: 'max-h-full' },
+  { label: t('audience.1.label'), href: '#agriculteurs', image: '/images/agri.png', w: 147, h: 102, imageClass: 'max-h-full' },
+  { label: t('audience.2.label'), href: '#cooperatives', image: '/images/indus.png', w: 236, h: 236, imageClass: 'max-h-full' },
   { label: t('audience.3.label'), href: '#bureaux-etudes', image: '/images/consultant.webp', w: 200, h: 200, imageClass: 'max-h-20' },
 ];
 ---
